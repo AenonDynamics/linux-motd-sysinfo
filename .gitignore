@@ -1,0 +1,10 @@
+.settings*
+.idea/*
+.project
+.credentials*
+.hidden*
+gfx/*
+PublicHtml/*
+node_modules*
+tmp/*
+.tmp*

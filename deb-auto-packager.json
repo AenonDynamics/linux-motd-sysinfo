@@ -1,0 +1,26 @@
+{
+    "name": "motd-sysinfo",
+    "version": "0.1.0",
+    "description": "Displays general system information via pam.motd on login",
+    "license": "MIT",
+    "maintainer": "Andi Dittrich <opensource@andidittrich.de>",
+    "website": "https://andidittrich.de",
+
+    "dependencies": [
+        "figlet"
+    ],
+
+    "conf": [
+    ],
+
+    "bin": [
+        "motd-sysinfo"
+    ],
+
+    "sbin": [
+    ],
+
+    "scripts": {
+        "postinst": "install.sh"
+    }
+}

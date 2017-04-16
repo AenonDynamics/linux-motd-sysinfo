@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# lsb release-info available ?
+if [ -x /usr/bin/lsb_release ]; then
+    DISTRIB_DESCRIPTION=$(lsb_release -s -d)
+fi
+
+# Welcome Message
+printf "\nSystem Data as of: %s\n" "$(date)"
+printf "%s %s\n" "$DISTRIB_DESCRIPTION" "$(uname -r)"
+
+# Show Hostname
+figlet $(hostname)
+
+# System Params
+load=`cat /proc/loadavg     | awk '{print $2}'`
+memory_usage=`free -m       | awk '/Mem/ { printf("%3.1f%%", $3/$2*100) }'`
+swap_usage=`free -m         | awk '/Swap/ { printf("%3.1f%%", $3/$2*100) }'`
+users=`users                | wc -w`
+
+echo ""
+printf "System load:\t%s\tMemory usage:\t%s\n" $load $memory_usage
+printf "Local users:\t%s\tSwap usage:\t%s\n" $users $swap_usage
+echo ""
+
+# Get disk usage
+df -h | grep -E "^(/dev/|Filesystem)"
+echo ""
