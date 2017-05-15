@@ -30,7 +30,20 @@ andi@sapphire:~$
 
 ## Package Installation ##
 
-**will follow soon - sorry**
+### 1. Add Aenon-Dynamics Repository ###
+
+**/etc/apt/sources.list.d/aenon-dynamics.list**
+
+```
+deb https://packages.aenon-dynamics.com/debian jessie main
+```
+
+### 2. Install the Package ###
+
+```
+apt-get update
+apt-get install motd-sysinfo
+```
 
 ## Manual Installation ##
 
