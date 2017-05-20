@@ -1,29 +1,32 @@
 {
     "name": "motd-sysinfo",
-    "version": "0.2.5",
-    "package-monster": "0.1.0",
+    "version": "0.3.0",
+    "package-monster": "0.2.0",
     "description": "Displays general system information via pam.motd on login",
     "license": "MIT",
-    "maintainer": "Andi Dittrich <opensource@andidittrich.de>",
-    "website": "https://andidittrich.de",
-    "target": ["debian"],
+    "author": "Andi Dittrich <opensource@aenon-dynamics.com>",
+    "website": "https://github.com/AenonDynamics/linux-motd-sysinfo",
+    "bugs": "https://github.com/AenonDynamics/linux-motd-sysinfo/issues",
+    "multiversion": false,
 
-    "dependencies": [
-        "figlet"
-    ],
+    "debian": {
+        "dependencies": [
+            "figlet"
+        ],
 
-    "conf": [
-    ],
+        "conf": [
+        ],
 
-    "bin": [
-        "motd-sysinfo"
-    ],
+        "bin": [
+            "motd-sysinfo"
+        ],
 
-    "sbin": [
-    ],
+        "sbin": [
+        ],
 
-    "scripts": {
-        "postinst": "install.sh"
+        "scripts": {
+            "postinst": "install.sh"
+        }
     }
 
 }

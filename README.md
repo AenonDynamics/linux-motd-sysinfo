@@ -32,7 +32,13 @@ andi@sapphire:~$
 
 ### 1. Add Aenon-Dynamics Repository ###
 
-**/etc/apt/sources.list.d/aenon-dynamics.list**
+**1.1 Install Repository PGP Key**
+
+```
+wget -O - https://packages.aenon-dynamics.com/static/pubkey.pgp | apt-key add - 
+```
+
+**1.2 Create /etc/apt/sources.list.d/aenon-dynamics.list**
 
 ```
 deb https://packages.aenon-dynamics.com/debian jessie main
