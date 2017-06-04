@@ -41,7 +41,7 @@ wget -O - https://packages.aenon-dynamics.com/static/pubkey.pgp | apt-key add -
 **1.2 Create /etc/apt/sources.list.d/aenon-dynamics.list**
 
 ```
-deb https://packages.aenon-dynamics.com/debian jessie main
+echo "deb https://packages.aenon-dynamics.com/debian jessie main" > /etc/apt/sources.list.d/aenon-dynamics.list
 ```
 
 ### 2. Install the Package ###

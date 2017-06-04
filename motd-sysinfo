@@ -10,7 +10,9 @@ printf "\nSystem Data as of: %s\n" "$(date)"
 printf "%s %s\n" "$DISTRIB_DESCRIPTION" "$(uname -r)"
 
 # Show Hostname
+printf "\033[1;35m"
 figlet $(hostname)
+printf "\033[0m"
 
 # System Params
 load=`cat /proc/loadavg     | awk '{print $2}'`
