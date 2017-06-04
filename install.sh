@@ -29,5 +29,3 @@ if [ ! -L /etc/update-motd.d/11-sysinfo ]; then
     # link update-motd to binary
     ln -s /usr/bin/motd-sysinfo /etc/update-motd.d/11-sysinfo
 fi
-
-echo "READY"
