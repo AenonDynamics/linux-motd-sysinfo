@@ -25,6 +25,8 @@ printf "System load:\t%s\tMemory usage:\t%s\n" $load $memory_usage
 printf "Local users:\t%s\tSwap usage:\t%s\n" $users $swap_usage
 echo ""
 
-# Get disk usage
-df -h | grep -E "^(/dev/|Filesystem)"
+# Get disk usage (use 2s timeout for weak nfs mounts)
+timeout --signal=kill 2s df -h | grep -E "^(/dev/|Filesystem)"
+
+# empty line
 echo ""
