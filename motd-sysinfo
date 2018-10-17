@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
-# lsb release-info available ?
-if [ -x /usr/bin/lsb_release ]; then
-    DISTRIB_DESCRIPTION=$(lsb_release -s -d)
+# os available ?
+if [ -f /etc/os-release ]; then
+    source /etc/os-release
+else
+    PRETTY_NAME="Linux"
 fi
 
 # Welcome Message
-printf "\nSystem Data as of: %s\n" "$(date)"
-printf "%s %s\n" "$DISTRIB_DESCRIPTION" "$(uname -r)"
+printf "\n%s\n" "$(date)"
+printf "%s | %s\n" "$PRETTY_NAME" "$(uname -r)"
 
 # Show Hostname
 printf "\033[1;34m"
