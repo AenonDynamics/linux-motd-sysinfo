@@ -4,27 +4,23 @@ MOTD-SYSINFO
 Displays general system information via pam.motd on login
 
 ```
-Using username "andi".
-Authenticating with public key
+Sun  5 Jan 12:34:52 CET 2020
+Debian GNU/Linux 10 (buster) | 4.19.0-6-amd64
+            _      
+  ___ _ __ (_) ___ 
+ / _ \ '_ \| |/ __|
+|  __/ |_) | | (__ 
+ \___| .__/|_|\___|
+     |_|           
 
-System Data as of: Sun Apr 16 17:02:50 UTC 2017
-Debian GNU/Linux 8.7 (jessie) 3.16.0-4-amd64
-                       _     _
- ___  __ _ _ __  _ __ | |__ (_)_ __ ___
-/ __|/ _` | '_ \| '_ \| '_ \| | '__/ _ \
-\__ \ (_| | |_) | |_) | | | | | | |  __/
-|___/\__,_| .__/| .__/|_| |_|_|_|  \___|
-          |_|   |_|
+System load:    0.40     Memory usage:  11.0%
+Local users:    1        Swap usage:    0.0%
 
-System load:    0.05    Memory usage:   17.6%
-Local users:    1       Swap usage:     0.0%
+Filesystem                                  Size  Used Avail Use% Mounted on
+/dev/nvme0n1p3                             2240G 1680G  450G  79% /
+/dev/nvme0n1p2                              923M  129M  731M  15% /boot
+/dev/nvme0n1p1                              511M  5.1M  506M   1% /boot/efi
 
-Filesystem      Size  Used Avail Use% Mounted on
-/dev/sdb2        25G   13G   11G  54% /
-/dev/sda1       118T   43T   69T  39% /home/andi
-/dev/sdb1       511M  132K  511M   1% /boot/efi
-
-Last login: Sun Apr 16 17:01:54 2017 from infinity.localnet
 andi@sapphire:~$
 ```
 
@@ -32,16 +28,12 @@ andi@sapphire:~$
 
 ### 1. Add Aenon-Dynamics Repository ###
 
-**1.1 Install Repository PGP Key**
+```bash
+# download the gpg key
+wget -O /usr/share/keyrings/aenon-dynamics.gpg https://packages.aenon-dynamics.com/static/pubkey.gpg
 
-```
-wget -O - https://packages.aenon-dynamics.com/static/pubkey.pgp | apt-key add - 
-```
-
-**1.2 Create /etc/apt/sources.list.d/aenon-dynamics.list**
-
-```
-echo "deb https://packages.aenon-dynamics.com/debian jessie main" > /etc/apt/sources.list.d/aenon-dynamics.list
+# add apt repository with pinned key
+echo "deb [signed-by=/usr/share/keyrings/aenon-dynamics.gpg] https://packages.aenon-dynamics.com/debian stable main" > /etc/apt/sources.list.d/aenon-dynamics.list
 ```
 
 ### 2. Install the Package ###
@@ -53,7 +45,16 @@ apt-get install motd-sysinfo
 
 ## Manual Installation ##
 
-Copy the `motd-sysinfo` script to `/usr/bin/motd-sysinfo` and make it executable via `chmod 0755 /usr/bin/motd-sysinfo`. Finally run the `install.sh` script to setup the symlinks
+```bash
+# copy script
+cp motd-sysinfo /usr/bin/motd-sysinfo
+
+# mark it executable
+chmod 0755 /usr/bin/motd-sysinfo
+
+# add symlink
+ln -s /usr/bin/motd-sysinfo /etc/update-motd.d/11-sysinfo
+```
 
 ### Dependencies ###
 
@@ -63,15 +64,13 @@ The script uses the `figlet` package to display the hostname
 apt-get install figlet
 ```
 
-## Mode of Operation ##
-
-tbc..
-
 ## Distributions ##
 
 Tested with:
 
-* Debian Jessie 8.7
+* Debian Jessie
+* Debian Stretch
+* Debian Buster
 
 ## Contribution ##
 

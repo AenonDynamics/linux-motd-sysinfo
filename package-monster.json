@@ -1,6 +1,6 @@
 {
     "name": "motd-sysinfo",
-    "version": "0.7.0",
+    "version": "0.7.1",
     "package-monster": "0.2.0",
     "description": "Displays general system information via pam.motd on login",
     "license": "MIT",
