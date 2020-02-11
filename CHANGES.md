@@ -1,3 +1,8 @@
+### 0.8.0 ###
+
+* Added: total amount of available ram + swap in `GiB`
+* Changed: short hostname is shown as figlet instead of fqdn
+
 ### 0.7.1 ###
 
 * Bugfix: division-by-zero attempt in case no swap is available
